@@ -1,10 +1,18 @@
 <section class="forma-hero">
   <div class="forma-hero__content">
-    <h1>Designed for living</h1>
-    <p>Timeless furniture for modern spaces.</p>
-    <a href="/collections/all" class="forma-hero__button">
-      Shop collection
-    </a>
+    {% if section.settings.heading != blank %}
+      <h1>{{ section.settings.heading }}</h1>
+    {% endif %}
+
+    {% if section.settings.text != blank %}
+      <p>{{ section.settings.text }}</p>
+    {% endif %}
+
+    {% if section.settings.button_label != blank %}
+      <a href="{{ section.settings.button_link }}" class="forma-hero__button">
+        {{ section.settings.button_label }}
+      </a>
+    {% endif %}
   </div>
 </section>
 
@@ -53,7 +61,31 @@
 {% schema %}
 {
   "name": "FORMA Hero",
-  "settings": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Designed for living"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Timeless furniture for modern spaces."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Shop collection"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
   "presets": [
     {
       "name": "FORMA Hero"
