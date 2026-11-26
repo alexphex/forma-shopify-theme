@@ -8,31 +8,49 @@
     {% endif %}
 
     <div class="forma-collections__grid">
-      {% for block in section.blocks %}
+        {% for block in section.blocks %}
         <div class="forma-collections__card" {{ block.shopify_attributes }}>
 
-          {% if block.settings.image != blank %}
+            {% assign selected_collection = block.settings.collection %}
+
+            {% if block.settings.image != blank %}
             {{
-              block.settings.image
-              | image_url: width: 1000
-              | image_tag: loading: 'lazy'
+                block.settings.image
+                | image_url: width: 1000
+                | image_tag: loading: 'lazy'
             }}
-          {% else %}
+            {% elsif selected_collection != blank and selected_collection.image != blank %}
+            {{
+                selected_collection.image
+                | image_url: width: 1000
+                | image_tag: loading: 'lazy'
+            }}
+            {% else %}
             <div class="forma-collections__placeholder"></div>
-          {% endif %}
-
-          <div class="forma-collections__card-content">
-            <h3>{{ block.settings.title }}</h3>
-
-            {% if block.settings.link != blank %}
-              <a href="{{ block.settings.link }}">
-                Explore
-              </a>
             {% endif %}
-          </div>
+
+            <div class="forma-collections__card-content">
+            <h3>
+                {% if block.settings.title != blank %}
+                {{ block.settings.title }}
+                {% elsif selected_collection != blank %}
+                {{ selected_collection.title }}
+                {% endif %}
+            </h3>
+
+            {% if selected_collection != blank %}
+                <a href="{{ selected_collection.url }}">
+                Explore
+                </a>
+            {% elsif block.settings.link != blank %}
+                <a href="{{ block.settings.link }}">
+                Explore
+                </a>
+            {% endif %}
+            </div>
 
         </div>
-      {% endfor %}
+        {% endfor %}
     </div>
 
   </div>
@@ -137,6 +155,11 @@
       "type": "collection_card",
       "name": "Collection card",
       "settings": [
+        {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+        },
         {
           "type": "image_picker",
           "id": "image",
