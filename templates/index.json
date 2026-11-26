@@ -56,10 +56,14 @@
       "settings": {
         "heading": "Explore our collections"
       }
+    },
+    "forma_bestsellers": {
+      "type": "forma-bestsellers"
     }
   },
   "order": [
     "forma_hero",
-    "forma_collections"
+    "forma_collections",
+    "forma-bestsellers"
   ]
 }
