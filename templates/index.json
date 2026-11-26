@@ -26,6 +26,7 @@
         "collection_card_xrmaDD": {
           "type": "collection_card",
           "settings": {
+            "collection": "sofas",
             "title": "Collection",
             "link": ""
           }
@@ -33,6 +34,7 @@
         "collection_card_fLY3QN": {
           "type": "collection_card",
           "settings": {
+            "collection": "chairs",
             "title": "Collection",
             "link": ""
           }
@@ -40,6 +42,7 @@
         "collection_card_84FXwP": {
           "type": "collection_card",
           "settings": {
+            "collection": "tables",
             "title": "Collection",
             "link": ""
           }
