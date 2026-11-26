@@ -2,9 +2,13 @@
   "sections": {
     "forma_hero": {
       "type": "forma-hero"
+    },
+    "forma_collections": {
+      "type": "forma-collections"
     }
   },
   "order": [
-    "forma_hero"
+    "forma_hero",
+    "forma_collections"
   ]
 }

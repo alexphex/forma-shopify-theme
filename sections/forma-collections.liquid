@@ -1,0 +1,177 @@
+<section class="forma-collections">
+  <div class="forma-collections__inner">
+
+    {% if section.settings.heading != blank %}
+      <h2 class="forma-collections__heading">
+        {{ section.settings.heading }}
+      </h2>
+    {% endif %}
+
+    <div class="forma-collections__grid">
+      {% for block in section.blocks %}
+        <div class="forma-collections__card" {{ block.shopify_attributes }}>
+
+          {% if block.settings.image != blank %}
+            {{
+              block.settings.image
+              | image_url: width: 1000
+              | image_tag: loading: 'lazy'
+            }}
+          {% else %}
+            <div class="forma-collections__placeholder"></div>
+          {% endif %}
+
+          <div class="forma-collections__card-content">
+            <h3>{{ block.settings.title }}</h3>
+
+            {% if block.settings.link != blank %}
+              <a href="{{ block.settings.link }}">
+                Explore
+              </a>
+            {% endif %}
+          </div>
+
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .forma-collections {
+    padding: 80px 40px;
+    background: #FBF9F5;
+  }
+
+  .forma-collections__inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .forma-collections__heading {
+    font-size: 36px;
+    text-align: center;
+    margin: 0 0 40px;
+    color: #1A1A18;
+  }
+
+  .forma-collections__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .forma-collections__card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .forma-collections__card img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .forma-collections__placeholder {
+    width: 100%;
+    height: 480px;
+    background: #EAE3D9;
+  }
+
+  .forma-collections__card-content {
+    padding-top: 20px;
+  }
+
+  .forma-collections__card-content h3 {
+    font-size: 24px;
+    color: #1A1A18;
+    margin: 0 0 10px;
+  }
+
+  .forma-collections__card-content a {
+    color: #8C6747;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .forma-collections__card-content a:hover {
+    text-decoration: underline;
+  }
+
+  @media screen and (max-width: 749px) {
+    .forma-collections {
+      padding: 50px 20px;
+    }
+
+    .forma-collections__grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .forma-collections__card img,
+    .forma-collections__placeholder {
+      height: 380px;
+    }
+
+    .forma-collections__heading {
+      font-size: 28px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "FORMA Collections",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Explore our collections"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_card",
+      "name": "Collection card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Collection"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "FORMA Collections",
+      "blocks": [
+        {
+          "type": "collection_card"
+        },
+        {
+          "type": "collection_card"
+        },
+        {
+          "type": "collection_card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
