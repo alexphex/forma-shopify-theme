@@ -1,4 +1,11 @@
-<section class="forma-hero">
+<section
+  class="forma-hero"
+  {% if section.settings.image != blank %}
+    style="background-image: url('{{ section.settings.image | image_url: width: 2000 }}');"
+  {% endif %}
+>
+  <div class="forma-hero__overlay"></div>
+
   <div class="forma-hero__content">
     {% if section.settings.heading != blank %}
       <h1>{{ section.settings.heading }}</h1>
@@ -23,24 +30,35 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: #EAE3D9;
+    position: relative;
     padding: 40px 20px;
+    background-color: #EAE3D9;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .forma-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(26, 26, 24, {{ section.settings.overlay_opacity | divided_by: 100.0 }});
   }
 
   .forma-hero__content {
+    position: relative;
+    z-index: 1;
     max-width: 700px;
   }
 
   .forma-hero h1 {
     font-size: 64px;
     margin: 0 0 20px;
-    color: #1A1A18;
+    color: {{ section.settings.text_color }};
   }
 
   .forma-hero p {
     font-size: 18px;
     margin-bottom: 30px;
-    color: #1A1A18;
+    color: {{ section.settings.text_color }};
   }
 
   .forma-hero__button {
@@ -51,7 +69,15 @@
     text-decoration: none;
   }
 
+  .forma-hero__button:hover {
+    opacity: 0.85;
+  }
+
   @media screen and (max-width: 749px) {
+    .forma-hero {
+      min-height: 450px;
+    }
+
     .forma-hero h1 {
       font-size: 38px;
     }
@@ -62,6 +88,26 @@
 {
   "name": "FORMA Hero",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "default": 30
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
     {
       "type": "text",
       "id": "heading",
