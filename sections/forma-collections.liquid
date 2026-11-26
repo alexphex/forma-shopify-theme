@@ -30,22 +30,14 @@
             {% endif %}
 
             <div class="forma-collections__card-content">
-            <h3>
-                {% if block.settings.title != blank %}
-                {{ block.settings.title }}
-                {% elsif selected_collection != blank %}
-                {{ selected_collection.title }}
-                {% endif %}
-            </h3>
-
             {% if selected_collection != blank %}
-                <a href="{{ selected_collection.url }}">
-                Explore
-                </a>
-            {% elsif block.settings.link != blank %}
-                <a href="{{ block.settings.link }}">
-                Explore
-                </a>
+                <h3>{{ selected_collection.title }}</h3>
+                <a href="{{ selected_collection.url }}">Explore</a>
+            {% else %}
+                <h3>{{ block.settings.title }}</h3>
+                {% if block.settings.link != blank %}
+                <a href="{{ block.settings.link }}">Explore</a>
+                {% endif %}
             {% endif %}
             </div>
 
@@ -164,12 +156,6 @@
           "type": "image_picker",
           "id": "image",
           "label": "Image"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Collection"
         },
         {
           "type": "url",
