@@ -1,0 +1,63 @@
+<section class="forma-hero">
+  <div class="forma-hero__content">
+    <h1>Designed for living</h1>
+    <p>Timeless furniture for modern spaces.</p>
+    <a href="/collections/all" class="forma-hero__button">
+      Shop collection
+    </a>
+  </div>
+</section>
+
+<style>
+  .forma-hero {
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #EAE3D9;
+    padding: 40px 20px;
+  }
+
+  .forma-hero__content {
+    max-width: 700px;
+  }
+
+  .forma-hero h1 {
+    font-size: 64px;
+    margin: 0 0 20px;
+    color: #1A1A18;
+  }
+
+  .forma-hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #1A1A18;
+  }
+
+  .forma-hero__button {
+    display: inline-block;
+    padding: 14px 32px;
+    background: #1A1A18;
+    color: #FBF9F5;
+    text-decoration: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .forma-hero h1 {
+      font-size: 38px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "FORMA Hero",
+  "settings": [],
+  "presets": [
+    {
+      "name": "FORMA Hero"
+    }
+  ]
+}
+{% endschema %}
