@@ -62,12 +62,16 @@
     },
     "forma_brand_story": {
       "type": "forma-brand-story"
+    },
+    "forma_newsletter": {
+      "type": "forma-newsletter"
     }
   },
   "order": [
     "forma_hero",
     "forma_collections",
     "forma_bestsellers",
-    "forma_brand_story"
+    "forma_brand_story",
+    "forma_newsletter"
   ]
 }

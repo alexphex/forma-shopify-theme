@@ -1,0 +1,171 @@
+
+<section class="forma-newsletter">
+  <div class="forma-newsletter__inner">
+
+    <p class="forma-newsletter__eyebrow">
+      STAY INSPIRED
+    </p>
+
+    <h2>{{ section.settings.heading }}</h2>
+
+    <div class="forma-newsletter__text">
+      {{ section.settings.text }}
+    </div>
+
+    {% form 'customer', class: 'forma-newsletter__form' %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+
+      <input
+        type="email"
+        name="contact[email]"
+        placeholder="{{ section.settings.placeholder }}"
+        value="{{ form.email }}"
+        autocorrect="off"
+        autocapitalize="off"
+        autocomplete="email"
+        required
+      >
+
+      <button type="submit">
+        {{ section.settings.button_label }}
+      </button>
+
+      {% if form.posted_successfully? %}
+        <p class="forma-newsletter__message">
+          Thank you for subscribing!
+        </p>
+      {% endif %}
+
+      {% if form.errors %}
+        <div class="forma-newsletter__message">
+          {{ form.errors | default_errors }}
+        </div>
+      {% endif %}
+    {% endform %}
+
+  </div>
+</section>
+
+<style>
+  .forma-newsletter {
+    padding: 90px 20px;
+    background: #1A1A18;
+    color: #FBF9F5;
+    text-align: center;
+  }
+
+  .forma-newsletter__inner {
+    max-width: 650px;
+    margin: 0 auto;
+  }
+
+  .forma-newsletter__eyebrow {
+    color: #C3A68A;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+  }
+
+  .forma-newsletter h2 {
+    font-size: 38px;
+    line-height: 1.2;
+    margin: 0 0 18px;
+  }
+
+  .forma-newsletter__text {
+    color: #D4D0C9;
+    line-height: 1.7;
+    margin-bottom: 30px;
+  }
+
+  .forma-newsletter__form {
+    display: flex;
+    gap: 10px;
+    max-width: 550px;
+    margin: 0 auto;
+  }
+
+  .forma-newsletter__form input {
+    flex: 1;
+    min-width: 0;
+    padding: 15px;
+    border: 1px solid #77736D;
+    background: transparent;
+    color: #FBF9F5;
+    font: inherit;
+  }
+
+  .forma-newsletter__form input::placeholder {
+    color: #B9B4AC;
+  }
+
+  .forma-newsletter__form button {
+    padding: 15px 25px;
+    border: 1px solid #FBF9F5;
+    background: #FBF9F5;
+    color: #1A1A18;
+    cursor: pointer;
+    font: inherit;
+  }
+
+  .forma-newsletter__message {
+    flex-basis: 100%;
+    color: #C3A68A;
+    margin-top: 12px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .forma-newsletter {
+      padding: 65px 20px;
+    }
+
+    .forma-newsletter h2 {
+      font-size: 30px;
+    }
+
+    .forma-newsletter__form {
+      flex-direction: column;
+    }
+
+    .forma-newsletter__form button {
+      width: 100%;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "FORMA Newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "A little inspiration, delivered"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Sign up for updates, new arrivals and thoughtful ideas for your home.</p>"
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Email placeholder",
+      "default": "Your email address"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Subscribe"
+    }
+  ],
+  "presets": [
+    {
+      "name": "FORMA Newsletter"
+    }
+  ]
+}
+{% endschema %}
