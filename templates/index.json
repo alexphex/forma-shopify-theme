@@ -65,6 +65,9 @@
     },
     "forma_newsletter": {
       "type": "forma-newsletter"
+    },
+    "forma_footer": {
+      "type": "forma-footer"
     }
   },
   "order": [
@@ -72,6 +75,7 @@
     "forma_collections",
     "forma_bestsellers",
     "forma_brand_story",
-    "forma_newsletter"
+    "forma_newsletter",
+    "forma_footer"
   ]
 }

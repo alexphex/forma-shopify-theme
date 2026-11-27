@@ -1,0 +1,188 @@
+
+<footer class="forma-footer">
+  <div class="forma-footer__inner">
+
+    <div class="forma-footer__brand">
+      <a href="{{ routes.root_url }}" class="forma-footer__logo">
+        {{ section.settings.brand_name }}
+      </a>
+
+      <p>{{ section.settings.description }}</p>
+    </div>
+
+    <div class="forma-footer__column">
+      <h3>{{ section.settings.menu_heading }}</h3>
+
+      {% if section.settings.menu != blank %}
+        <ul>
+          {% for link in section.settings.menu.links %}
+            <li>
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+
+    <div class="forma-footer__column">
+      <h3>{{ section.settings.contact_heading }}</h3>
+      <p>{{ section.settings.contact_text }}</p>
+
+      {% if section.settings.email != blank %}
+        <a href="mailto:{{ section.settings.email }}">
+          {{ section.settings.email }}
+        </a>
+      {% endif %}
+    </div>
+
+  </div>
+
+  <div class="forma-footer__bottom">
+    <p>© {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
+    <p>Designed for living.</p>
+  </div>
+</footer>
+
+<style>
+  .forma-footer {
+    padding: 70px 40px 25px;
+    background: #1A1A18;
+    color: #FBF9F5;
+  }
+
+  .forma-footer__inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+    padding-bottom: 60px;
+  }
+
+  .forma-footer__logo {
+    display: inline-block;
+    color: #FBF9F5;
+    text-decoration: none;
+    font-size: 28px;
+    letter-spacing: 3px;
+  }
+
+  .forma-footer__brand p,
+  .forma-footer__column p {
+    color: #C4BFB7;
+    line-height: 1.7;
+    max-width: 350px;
+  }
+
+  .forma-footer__column h3 {
+    font-size: 14px;
+    margin: 5px 0 22px;
+  }
+
+  .forma-footer__column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .forma-footer__column li {
+    margin-bottom: 12px;
+  }
+
+  .forma-footer__column a {
+    color: #C4BFB7;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .forma-footer__column a:hover {
+    color: #FBF9F5;
+  }
+
+  .forma-footer__bottom {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 22px;
+    border-top: 1px solid #45433F;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    color: #A9A49C;
+    font-size: 12px;
+  }
+
+  .forma-footer__bottom p {
+    margin: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .forma-footer {
+      padding: 55px 20px 20px;
+    }
+
+    .forma-footer__inner {
+      grid-template-columns: 1fr;
+      gap: 35px;
+      padding-bottom: 40px;
+    }
+
+    .forma-footer__bottom {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "FORMA Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Brand name",
+      "default": "FORMA"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Timeless furniture for thoughtful living. Designed to bring comfort and character into everyday spaces."
+    },
+    {
+      "type": "text",
+      "id": "menu_heading",
+      "label": "Menu heading",
+      "default": "Explore"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Footer menu"
+    },
+    {
+      "type": "text",
+      "id": "contact_heading",
+      "label": "Contact heading",
+      "default": "Get in touch"
+    },
+    {
+      "type": "textarea",
+      "id": "contact_text",
+      "label": "Contact text",
+      "default": "Have a question? We'd love to hear from you."
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email address",
+      "default": "hello@example.com"
+    }
+  ],
+  "presets": [
+    {
+      "name": "FORMA Footer"
+    }
+  ]
+}
+{% endschema %}
