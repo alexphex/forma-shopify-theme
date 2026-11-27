@@ -3635,3 +3635,35 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+
+/* Forma STUDIO */
+/* FORMA - Header Styling */
+
+.header-wrapper {
+  background-color: #FBF9F5;
+}
+
+.header-wrapper--border-bottom {
+  border-bottom: 1px solid rgba(26, 26, 24, 0.12);
+}
+
+.header,
+.header__menu-item,
+.header__heading-link,
+.header__icon {
+  color: #1A1A18;
+}
+
+.header__menu-item {
+  font-family: var(--font-body-family);
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+}
+
+.header__menu-item:hover {
+  color: #8C6747;
+}
+
+.header__heading-link {
+  text-decoration: none;
+}
