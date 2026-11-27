@@ -27,7 +27,6 @@
           "type": "collection_card",
           "settings": {
             "collection": "sofas",
-            "title": "Collection",
             "link": ""
           }
         },
@@ -35,7 +34,6 @@
           "type": "collection_card",
           "settings": {
             "collection": "chairs",
-            "title": "Collection",
             "link": ""
           }
         },
@@ -43,7 +41,6 @@
           "type": "collection_card",
           "settings": {
             "collection": "tables",
-            "title": "Collection",
             "link": ""
           }
         }
@@ -58,13 +55,16 @@
       }
     },
     "forma_bestsellers": {
-      "type": "forma-bestsellers"
+      "type": "forma-bestsellers",
+      "settings": {}
     },
     "forma_brand_story": {
-      "type": "forma-brand-story"
+      "type": "forma-brand-story",
+      "settings": {}
     },
     "forma_newsletter": {
-      "type": "forma-newsletter"
+      "type": "forma-newsletter",
+      "settings": {}
     }
   },
   "order": [
