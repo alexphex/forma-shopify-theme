@@ -59,11 +59,15 @@
     },
     "forma_bestsellers": {
       "type": "forma-bestsellers"
+    },
+    "forma_brand_story": {
+      "type": "forma-brand-story"
     }
   },
   "order": [
     "forma_hero",
     "forma_collections",
-    "forma_bestsellers"
+    "forma_bestsellers",
+    "forma_brand_story"
   ]
 }

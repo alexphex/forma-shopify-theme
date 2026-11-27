@@ -1,0 +1,162 @@
+
+<section class="forma-brand-story">
+  <div class="forma-brand-story__inner">
+
+    <div class="forma-brand-story__content">
+      <p class="forma-brand-story__eyebrow">
+        OUR PHILOSOPHY
+      </p>
+
+      <h2>{{ section.settings.heading }}</h2>
+
+      <div class="forma-brand-story__text">
+        {{ section.settings.text }}
+      </div>
+
+      {% if section.settings.button_label != blank %}
+        <a href="{{ section.settings.button_link }}" class="forma-brand-story__button">
+          {{ section.settings.button_label }}
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="forma-brand-story__image">
+      {% if section.settings.image != blank %}
+        {{
+          section.settings.image
+          | image_url: width: 1200
+          | image_tag: loading: 'lazy'
+        }}
+      {% else %}
+        <div class="forma-brand-story__placeholder"></div>
+      {% endif %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .forma-brand-story {
+    padding: 100px 40px;
+    background: #EAE3D9;
+  }
+
+  .forma-brand-story__inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .forma-brand-story__content {
+    max-width: 550px;
+  }
+
+  .forma-brand-story__eyebrow {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #8C6747;
+    margin-bottom: 20px;
+  }
+
+  .forma-brand-story__content h2 {
+    font-size: 42px;
+    line-height: 1.2;
+    color: #1A1A18;
+    margin-bottom: 25px;
+  }
+
+  .forma-brand-story__text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #1A1A18;
+  }
+
+  .forma-brand-story__button {
+    display: inline-block;
+    margin-top: 30px;
+    color: #1A1A18;
+    text-decoration: none;
+    border-bottom: 1px solid #8C6747;
+    padding-bottom: 6px;
+  }
+
+  .forma-brand-story__image {
+    width: 100%;
+  }
+
+  .forma-brand-story__image img {
+    display: block;
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+  }
+
+  .forma-brand-story__placeholder {
+    height: 600px;
+    background: #FBF9F5;
+  }
+
+  @media screen and (max-width: 749px) {
+    .forma-brand-story {
+      padding: 60px 20px;
+    }
+
+    .forma-brand-story__inner {
+      grid-template-columns: 1fr;
+      gap: 35px;
+    }
+
+    .forma-brand-story__content h2 {
+      font-size: 32px;
+    }
+
+    .forma-brand-story__image img,
+    .forma-brand-story__placeholder {
+      height: 400px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "FORMA Brand Story",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Made for a life well lived"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>We believe furniture should be more than functional. It should bring comfort, character and timeless beauty into everyday life.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Discover our story"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "FORMA Brand Story"
+    }
+  ]
+}
+{% endschema %}
